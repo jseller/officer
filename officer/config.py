@@ -21,11 +21,10 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = 'thisisreallysecretforsure'
-    API_CLIENT_ID = 'ecwgleloykidsc9v2d6gajg5'
-    API_SECRET_KEY = '9zudg0xblrzcav6bhn0lewdwz'
-    GOOGLE_CLIENT_ID = '175325454822-pe6ndus00851osas8v8'\
-        'd5ofdkeqdh7a1.apps.googleusercontent.com'
-    GOOGLE_CLIENT_SECRET = 'TC-2DcVjUaJpfQncrCKa16dU'
+    API_CLIENT_ID = os.environ.get('APP_CLIENT_ID')
+    API_SECRET_KEY = os.environ.get('API_SECRET_KEY')
+    GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID')
+    GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET')
 
 
 class ProductionConfig(Config):
