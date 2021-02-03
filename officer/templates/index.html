@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+
+    <h2>Officer schedules the standup</h2>
+    <form id="standupForm">
+        <div id="messages"></div>
+        Datetime:
+        <input type="text" name="date" placeholder="2021-02-03T11:30"/>
+        <button id="saveStandupButton">Save</button>
+    </form>
+    
+    Upcoming Events
+    <table id="events">
+    </table>
+</body>
+
+<script>
+    var today = new Date();
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() +1);
+
+    $.get({
+        url: "/events?from_date="+today+"&to_date="+tomorrow,
+        success: function( results ) {  
+            results.forEach(event => {
+                    $('#events').append( $('<tr>')
+                        .append('<td><b> ' + event.title + '</b></td>'))})}
+    });
+
+    today.setHours("11");
+    today.setMinutes("30");
+    var meeting_time = today.toISOString();
+    $("#standupForm input[name='date']").val(meeting_time);
+    $(document).on('click', '#saveStandupButton', function (e) {
+        e.preventDefault();    
+        var formdata = {'date': $("#standupForm input[name='date']").val()}; 
+        $.ajax({
+            url: '/standup',
+            type: 'post',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(formdata),
+            success:  function (response, status, xhr) {
+                $("#messages").html(response);
+            },
+            error: function (response, status, xhr) {
+                $("#messages").html(response);
+            }
+        })
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,23 @@
+image:
+  name: python:3.6
+    
+test: &test
+  step:
+    name: Test
+    script:
+    - apt-get update
+    - pip install pipenv
+    - pipenv install --dev
+    - pipenv run pytest tests
+    - pipenv run flake8
+    services:
+    - docker
+    
+
+pipelines:
+  default:
+  - <<: *test
+  branches:
+    master:
+    - <<: *test
+

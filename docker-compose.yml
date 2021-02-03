@@ -1,0 +1,44 @@
+version: "3.4"
+
+services:
+  web:
+    image: nylas-events:dev
+    build:
+      context: "."
+    env_file:
+      - .prod.env
+    command: >
+      gunicorn -b 0.0.0.0:5000
+      --access-logfile -
+      --reload
+      wsgi:app
+    ports:
+      - "${DOCKER_WEB_PORT:-127.0.0.1:5000}:5000"
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "${DOCKER_STOP_GRACE_PERIOD:-3s}"
+    expose:
+      - "5000"
+    volumes:
+      - ./:/app
+    
+  nginx:
+    build: ./nginx
+    restart: always
+    volumes:
+      - /www/static
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+
+  redis:
+    env_file:
+      - ".prod.env"
+    image: "redis:5.0.7-buster"
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "${DOCKER_STOP_GRACE_PERIOD:-3s}"
+    volumes:
+      - "redis:/data"
+
+volumes:
+  redis: {}
