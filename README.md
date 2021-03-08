@@ -214,6 +214,7 @@ Write BDD acceptance criteria from story goal
 - Add to features
 Write functional spec in EARS syntax
 - Add to architecture/engineering (context:requirements) (container:component)
+- Context and resposibilty http://www.wirfs-brock.com/PDFs/A_Brief-Tour-of-RDD.pdf
 Add issue for implementation
 - add Link to feature and functional spec
 Link issue to feature
@@ -226,3 +227,13 @@ Feature
 Functional requirements 
 - EARS
 - https://aaltodoc.aalto.fi/bitstream/handle/123456789/12861/D5_uusitalo_eero_2012.pdf
+
+TDD Spec DD
+- spec has structure and behaviour
+
+base without dependencies
+base with mocked dependencies injected
+base wth live dependencies
+
+mutate parameters (inputs) https://software.rajivprab.com/2021/02/04/mutation-driven-testing-when-tdd-just-isnt-good-enough/?utm_source=thevaluabledev&utm_medium=email
+mutate configuration

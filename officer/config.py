@@ -50,4 +50,4 @@ class DevelopmentConfig(Config):
     SCHEDULER = True
     LOGGING_CONFIG = 'logging.conf'
     # only use for development
-    API_ACCESS_TOKEN = 'x9VYCD3vGVH8npqDjXIuLFA3Z0amiQ'
+    API_ACCESS_TOKEN = 'R04k0vI4HRtWpoQNBsNlrQxzzTqJHL'
