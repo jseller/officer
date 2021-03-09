@@ -25,6 +25,7 @@ class Config(object):
     API_SECRET_KEY = os.environ.get('API_SECRET_KEY')
     GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID')
     GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET')
+    API_ACCESS_TOKEN = os.environ.get('API_ACCESS_TOKEN')
 
 
 class ProductionConfig(Config):
@@ -40,6 +41,7 @@ class TestConfig(Config):
     TEST_DATA = True
     SCHEDULER = False
     LOGGING_CONFIG = 'logging-test.conf'
+    API_ACCESS_TOKEN = 'R04k0vI4HRtWpoQNBsNlrQxzzTqJHL'
 
 
 class DevelopmentConfig(Config):
@@ -49,5 +51,3 @@ class DevelopmentConfig(Config):
     TEST_DATA = True
     SCHEDULER = True
     LOGGING_CONFIG = 'logging.conf'
-    # only use for development
-    API_ACCESS_TOKEN = 'R04k0vI4HRtWpoQNBsNlrQxzzTqJHL'

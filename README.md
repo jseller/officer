@@ -172,8 +172,19 @@ officer use tls (ssl connection with dependencies)
 
 pipenv run pytest tests
 pipenv run flake8
-
 pipenv run flask run
+
+
+Python —version
+Use pyenv to to upgrade to python3
+Get brew from brew.sh
+brew install pyenv
+Add pyenv to .zrcsh for commands => https://ducfilan.wordpress.com/2017/11/13/manage-versions-of-python-with-pyenv-and-zsh-in-macos/
+pyenv install 3.6.8
+pyenv versions
+pyenv global 3.6.8
+
+
 
 # Deployment
 
