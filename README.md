@@ -4,7 +4,8 @@ Officer books the stand-up so you don't have to!
 
 # Stories and Feature Requirements
 
-OrganizerUser wants to book daily standup meeting. 
+### OrganizerUser wants to book daily standup meeting. 
+
 Given user account active on Officer and CalendarService
 When organizer posts daily standup meeting info to StandupOrganizer
 And includes a list of participants
